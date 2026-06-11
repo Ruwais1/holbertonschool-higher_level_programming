@@ -1,0 +1,76 @@
+======================================
+Doctest for 101-lazy_matrix_mul.py
+======================================
+
+Importing the function:
+    >>> lazy_matrix_mul = __import__('101-lazy_matrix_mul').lazy_matrix_mul
+
+Standard multiplication (using print to match exact shell output formatting):
+    >>> print(lazy_matrix_mul([[1, 2], [3, 4]], [[1, 2], [3, 4]]))
+    [[ 7 10]
+     [15 22]]
+
+    >>> print(lazy_matrix_mul([[1, 2]], [[3, 4], [5, 6]]))
+    [[13 16]]
+
+1. Scalar/String instead of list validation:
+    >>> lazy_matrix_mul("string", [[1, 2]])
+    Traceback (most recent call last):
+        ...
+    ValueError: ...
+
+    >>> lazy_matrix_mul([[1, 2]], 123)
+    Traceback (most recent call last):
+        ...
+    ValueError: ...
+
+2. 1D List dimension alignment errors (Not list of lists):
+    >>> lazy_matrix_mul([1, 2], [[1, 2]])
+    Traceback (most recent call last):
+        ...
+    ValueError: ...
+
+3. Empty list validation:
+    >>> lazy_matrix_mul([], [[1, 2]])
+    Traceback (most recent call last):
+        ...
+    ValueError: ...
+
+    >>> lazy_matrix_mul([[1, 2]], [[]])
+    Traceback (most recent call last):
+        ...
+    ValueError: ...
+
+4. Elements type validation:
+    >>> lazy_matrix_mul([[1, "2"]], [[1, 2]])
+    Traceback (most recent call last):
+        ...
+    TypeError: ...
+
+    >>> lazy_matrix_mul([[1, 2]], [[1, None]])
+    Traceback (most recent call last):
+        ...
+    TypeError: ...
+
+5. Rectangle / Jagged array validation:
+    >>> lazy_matrix_mul([[1, 2], [3]], [[1, 2], [3, 4]])
+    Traceback (most recent call last):
+        ...
+    ValueError: ...
+
+6. Multiplication compatibility (Inner dimensions mismatch):
+    >>> lazy_matrix_mul([[1, 2]], [[1, 2]])
+    Traceback (most recent call last):
+        ...
+    ValueError: ...
+
+7. Missing Arguments Errors:
+    >>> lazy_matrix_mul([[1, 2]])
+    Traceback (most recent call last):
+        ...
+    TypeError: ...
+
+    >>> lazy_matrix_mul()
+    Traceback (most recent call last):
+        ...
+    TypeError: ...
