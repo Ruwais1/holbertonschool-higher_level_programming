@@ -1,0 +1,50 @@
+======================================
+Doctest for 5-text_indentation.py
+======================================
+
+Importing the function:
+    >>> text_indentation = __import__('5-text_indentation').text_indentation
+
+Standard usage:
+    >>> text_indentation("Hello. World? Testing: code.")
+    Hello.
+    <BLANKLINE>
+    World?
+    <BLANKLINE>
+    Testing:
+    <BLANKLINE>
+    code.
+    <BLANKLINE>
+
+Handling multiple dynamic spaces after punctuation:
+    >>> text_indentation("First.    Second?   Third:End.")
+    First.
+    <BLANKLINE>
+    Second?
+    <BLANKLINE>
+    Third:
+    <BLANKLINE>
+    End.
+    <BLANKLINE>
+
+Type errors (Input is not a string):
+    >>> text_indentation(123)
+    Traceback (most recent call last):
+        ...
+    TypeError: text must be a string
+
+    >>> text_indentation(None)
+    Traceback (most recent call last):
+        ...
+    TypeError: text must be a string
+
+    >>> text_indentation(["String inside list"])
+    Traceback (most recent call last):
+        ...
+    TypeError: text must be a string
+
+Missing argument error:
+    >>> text_indentation()
+    Traceback (most recent call last):
+        ...
+    TypeError: text_indentation() missing 1 required positional argument: 'text'
