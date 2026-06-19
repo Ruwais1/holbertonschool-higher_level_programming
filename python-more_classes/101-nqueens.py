@@ -22,47 +22,23 @@ def print_value_error_and_exit():
 
 
 def is_safe(placed_queens, row, col):
-    """
-    Checks if a queen can be safely placed at (row, col).
-    
-    Args:
-        placed_queens (list): List of coordinates [r, c] for placed queens.
-        row (int): The row to check.
-        col (int): The column to check.
-        
-    Returns:
-        bool: True if safe, False otherwise.
-    """
+    """Checks if a queen can be safely placed at (row, col)."""
     for r, c in placed_queens:
-        # Check same column or same diagonal
         if c == col or abs(r - row) == abs(c - col):
             return False
     return True
 
 
 def solve_nqueens(n, row, placed_queens):
-    """
-    Recursively finds all solutions for the N queens problem.
-    
-    Args:
-        n (int): The size of the board / number of queens.
-        row (int): The current row being evaluated.
-        placed_queens (list): The list of placed queens coordinates.
-    """
+    """Recursively finds all solutions for the N queens problem."""
     if row == n:
-        # All queens are placed successfully, print the solution
         print(placed_queens)
         return
 
     for col in range(n):
         if is_safe(placed_queens, row, col):
-            # Try placing queen at (row, col)
             placed_queens.append([row, col])
-            
-            # Move to the next row
             solve_nqueens(n, row + 1, placed_queens)
-            
-            # Backtrack: remove the queen and try the next column
             placed_queens.pop()
 
 
