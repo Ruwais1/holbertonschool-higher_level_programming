@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""This module defines a Square class with size, position, and printing."""
+"""This module defines a Square class with position and printing capabilities."""
 
 
 class Square:
@@ -7,10 +7,10 @@ class Square:
 
     def __init__(self, size=0, position=(0, 0)):
         """Initializes the square with size and position.
-        
+
         Args:
             size (int): The size of the square.
-            position (tuple): The position coordinates.
+            position (tuple): The (x, y) coordinates.
         """
         self.size = size
         self.position = position
@@ -22,7 +22,7 @@ class Square:
 
     @size.setter
     def size(self, value):
-        """Sets the size with strict type validation (rejects booleans)."""
+        """Sets the size with strict validation."""
         if type(value) is not int:
             raise TypeError("size must be an integer")
         if value < 0:
@@ -36,7 +36,7 @@ class Square:
 
     @position.setter
     def position(self, value):
-        """Sets the position with strict type validation."""
+        """Sets the position with strict tuple validation."""
         if (type(value) is not tuple or len(value) != 2 or
                 type(value[0]) is not int or type(value[1]) is not int or
                 value[0] < 0 or value[1] < 0):
@@ -49,19 +49,13 @@ class Square:
 
     def my_print(self):
         """Prints the square using the # character."""
-        if self.__size == 0:
-            print("")
-            return
-        for _ in range(self.__position[1]):
-            print("")
-        for _ in range(self.__size):
-            print(" " * self.__position[0] + "#" * self.__size)
+        print(self)
 
     def __str__(self):
         """Defines the string representation of the square."""
         if self.__size == 0:
             return ""
-        
+
         lines = []
         for _ in range(self.__position[1]):
             lines.append("")
