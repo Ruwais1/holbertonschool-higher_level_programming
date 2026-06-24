@@ -23,3 +23,13 @@ Test with negative numbers:
 >>> my_list2 = MyList([-5, 10, 0, -2])
 >>> my_list2.print_sorted()
 [-5, -2, 0, 10]
+
+Test with empty list:
+>>> my_list3 = MyList()
+>>> my_list3.print_sorted()
+[]
+
+Test with one element:
+>>> my_list4 = MyList([5])
+>>> my_list4.print_sorted()
+[5]
