@@ -34,7 +34,6 @@ def generate_invitations(template, attendees):
             if value is None:
                 value = "N/A"
             
-            # تم التعديل: تعديل الأقواس ونقل السطر خارج شرط if
             content = content.replace(f"{{{placeholder}}}", str(value))
         
         # 4 Generate Output Files
